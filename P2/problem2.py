@@ -1,11 +1,23 @@
 def is_safe_report(report):
     levels = list(map(int, report.split()))
-    differences = [levels[i + 1] - levels[i] for i in range(len(levels) - 1)]
 
-    if increasing := all(1 <= diff <= 3 for diff in differences):
-        return increasing
-    if decreasing := all(-3 <= diff <= -1 for diff in differences):
-        return decreasing
+    # func checking if the levels are safe
+    def check_safety(levels):
+        differences = []
+        for x in range(len(levels) - 1):
+            differences.append(levels[x + 1] - levels[x])
+        return (
+                all(1 <= diff <= 3 for diff in differences) or
+                all(-3 <= diff <= -1 for diff in differences)
+        )
+
+    if check_safety(levels):
+        return True
+
+    # Looping through all possible combinations of levels
+    for i in range(len(levels)):
+        if check_safety(levels[:i] + levels[i + 1:]):
+            return True
 
     return False
 
