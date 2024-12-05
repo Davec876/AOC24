@@ -1,6 +1,6 @@
 # Advent of Code 2024 - Dave C
 
-## Welcome to my repository for Advent of Code 2024! 🎄✨
+## Welcome to my repository for Advent of Code 2024! 🎄
 
 ### Keeping it real
 
